@@ -31,15 +31,15 @@ export default function SpeedBreakpointPage() {
       <div className="flex flex-col gap-4">
         <div className="flex gap-8 align-middle">
           <Form {...form}>
-            <form>
-              <div className="gap-2">
+            <form className="basis-1/4">
+              <div className="flex gap-3">
                 <FormField
                   control={form.control}
                   name="level"
                   render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>Character level</FormLabel>
+                        <FormLabel className="block">Character level</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -56,8 +56,8 @@ export default function SpeedBreakpointPage() {
                   control={form.control}
                   name="spell"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Haste spell</FormLabel>
+                    <FormItem className="basis-2/3">
+                      <FormLabel className="block">Haste spell</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -68,7 +68,7 @@ export default function SpeedBreakpointPage() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="none">None</SelectItem>
+                          <SelectItem value="none">none</SelectItem>
                           <SelectSeparator />
                           <SelectItem value="haste">utani hur</SelectItem>
                           <SelectItem value="strongHaste">
@@ -91,10 +91,10 @@ export default function SpeedBreakpointPage() {
           </Form>
 
           <div className="basis-1/4">
-            <h2 className="text-sm font-medium leading-none">
+            <h2 className="mb-2 text-sm font-medium leading-none">
               Character status
             </h2>
-            <ul className="mt-2 text-sm">
+            <ul className="text-sm">
               <li className="flex justify-between align-middle leading-5">
                 <span className="font-medium">Base speed:</span>
                 {charSpeed.base}
