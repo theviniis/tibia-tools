@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@types/node": "20.4.10",
@@ -16,23 +18,33 @@
     "eslint-config-next": "13.4.13",
     "next": "13.4.13",
     "postcss": "8.4.27",
+    "prettier-plugin-tailwindcss": "^0.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "class-variance-authority": "^0.7.0",
-    "tailwind-merge": "^1.14.0",
+    "@storybook/addon-essentials": "^7.2.3",
+    "@storybook/addon-interactions": "^7.2.3",
+    "@storybook/addon-links": "^7.2.3",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.2.3",
+    "@storybook/nextjs": "^7.2.3",
+    "@storybook/react": "^7.2.3",
+    "@storybook/testing-library": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "babel-eslint": "^10.1.0",
+    "class-variance-authority": "^0.7.0",
     "eslint": "8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.13",
     "prettier": "^3.0.1",
-    "prettier-plugin-tailwindcss": "^0.5.2"
+    "storybook": "^7.2.3",
+    "tailwind-merge": "^1.14.0"
   }
 }

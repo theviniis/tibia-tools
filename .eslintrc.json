@@ -9,9 +9,14 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
