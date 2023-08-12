@@ -22,8 +22,7 @@ import { DataTable, columns, data as rowsData } from './components'
 import { useSpeedBreakPoint } from './hooks'
 
 export default function SpeedBreakpointPage() {
-  const { form, charSpeed, level } = useSpeedBreakPoint()
-  // const { set } = useLocalStorage()
+  const { form, charSpeed } = useSpeedBreakPoint()
 
   return (
     <section className="container mx-auto flex flex-col gap-4 p-4">

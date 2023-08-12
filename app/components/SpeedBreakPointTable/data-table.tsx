@@ -38,9 +38,8 @@ export function DataTable<TData, TValue>({
   })
 
   function getSkin(cell: Cell<TData, unknown>) {
-    let skin = 'neutral'
+    let skin: 'neutral' | 'primary' | 'secondary' | 'warning' = 'neutral'
     if (!cell.id.match(/floor/)) return skin
-
     if (speed.base > (cell.getValue() as number)) {
       skin = 'primary'
     } else if (speed.totalWithModifiers < (cell.getValue() as number)) {
@@ -48,7 +47,6 @@ export function DataTable<TData, TValue>({
     } else {
       skin = 'secondary'
     }
-
     return skin
   }
 

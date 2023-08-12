@@ -1,20 +1,12 @@
-import { calcCharSpeed } from '@/lib/utils'
+import { HasteSpellsProps, calcCharSpeed } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useLocalStorage } from '.'
 
-enum HasteSpellProps {
-  none = 'none',
-  haste = 'utani hur',
-  strongHaste = 'utani gran hur',
-  charge = 'utani tempo hur',
-  swiftFoot = 'utamo tempo san',
-}
-
 const schema = z.object({
   level: z.coerce.number().positive().transform(Number),
-  spell: z.nativeEnum(HasteSpellProps).optional(),
+  spell: z.nativeEnum(HasteSpellsProps).optional(),
 })
 
 type FormProps = z.infer<typeof schema>

@@ -5,7 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-type HasteSpellsProps = 'haste' | 'strongHaste'
+export enum HasteSpellsProps {
+  none = 'none',
+  haste = 'utani hur',
+  strongHaste = 'utani gran hur',
+  charge = 'utani tempo hur',
+  swiftFoot = 'utamo tempo san',
+}
 
 type calcCharSpeedProps = {
   level: number
@@ -26,7 +32,7 @@ function calcCharSpeedWithHasteSpell({ level, spell }: calcCharSpeedProps) {
     charge: 1.9 * (speedBase - 40) + 40,
     swiftFoot: 1.8 * (speedBase - 40) + 40,
   } as const
-  return Math.floor(spells[spell])
+  return Math.floor(spells[spell as keyof typeof spells])
 }
 
 export function calcCharSpeed({ level, spell }: calcCharSpeedProps) {
