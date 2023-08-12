@@ -17,39 +17,12 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
-import { calcCharSpeed } from '@/lib/utils'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+
 import { DataTable, columns, data as rowsData } from './components'
+import { useSpeedBreakPoint } from './hooks'
 
-enum HasteSpellProps {
-  none = 'none',
-  haste = 'utani hur',
-  strongHaste = 'utani gran hur',
-  charge = 'utani tempo hur',
-  swiftFoot = 'utamo tempo san',
-}
-
-const schema = z.object({
-  level: z.coerce.number().positive().transform(Number),
-  spell: z.nativeEnum(HasteSpellProps).optional(),
-})
-
-type FormProps = z.infer<typeof schema>
-
-export default function DemoPage() {
-  const form = useForm<FormProps>({
-    defaultValues: {
-      level: 1,
-      spell: undefined,
-    },
-    resolver: zodResolver(schema),
-  })
-
-  const level = form.watch('level')
-  const spell = form.watch('spell')
-  const charSpeed = calcCharSpeed({ level, spell })
+export default function SpeedBreakpointPage() {
+  const { form, charSpeed } = useSpeedBreakPoint()
 
   return (
     <section className="container mx-auto flex flex-col gap-4 p-4">
