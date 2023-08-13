@@ -17,13 +17,12 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
-
+import { setItemFromLocalStorage } from '@/lib/utils'
 import { DataTable, columns, data as rowsData } from './components'
 import { useSpeedBreakPoint } from './hooks'
 
 export default function SpeedBreakpointPage() {
   const { form, charSpeed } = useSpeedBreakPoint()
-
   return (
     <section className="container mx-auto flex flex-col gap-4 p-4">
       <h1 className="leading-1 text-4xl font-medium">Speed breakpoints</h1>
@@ -36,21 +35,23 @@ export default function SpeedBreakpointPage() {
                 <FormField
                   control={form.control}
                   name="level"
-                  render={({ field }) => {
-                    return (
-                      <FormItem>
-                        <FormLabel className="block">Character level</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            placeholder="Enter your character's level"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )
-                  }}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="block">Character level</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="number"
+                          placeholder="Enter your character's level"
+                          onChange={(e) => {
+                            field.onChange(e.target.value)
+                            setItemFromLocalStorage('level', e.target.value)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
                 <FormField
                   control={form.control}
@@ -59,7 +60,11 @@ export default function SpeedBreakpointPage() {
                     <FormItem className="basis-2/3">
                       <FormLabel className="block">Haste spell</FormLabel>
                       <Select
-                        onValueChange={field.onChange}
+                        value={field.value}
+                        onValueChange={(value) => {
+                          field.onChange(value)
+                          setItemFromLocalStorage('spell', value)
+                        }}
                         defaultValue={field.value}
                       >
                         <FormControl>

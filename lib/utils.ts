@@ -54,3 +54,16 @@ export function calcCharSpeed({ level, spell }: calcCharSpeedProps) {
   } as const
   return speed
 }
+
+export function getItemFromLocalStorage(key: string) {
+  if (typeof window === 'undefined') return null
+  const data = window.localStorage.getItem(key)
+  return JSON.parse(data!)
+}
+
+export function setItemFromLocalStorage(key: string, value: unknown) {
+  if (typeof window === 'undefined') return null
+  const data = JSON.stringify(value)
+  if (!data) return
+  return window.localStorage.setItem(key, data)
+}
