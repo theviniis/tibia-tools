@@ -21,7 +21,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn('_tr]:border-b', className)} {...props} />
+  <thead ref={ref} className={cn('bg-zinc-100', className)} {...props} />
 ))
 TableHeader.displayName = 'TableHeader'
 
@@ -71,7 +71,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      'h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',
+      'h-12 px-4 text-center align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',
       className,
     )}
     {...props}
@@ -85,13 +85,13 @@ export type BG_COLOR_VARIANTS_SKINS =
   | 'secondary'
   | 'warning'
 
-export const bgColorVariants = cva('bg-opacity-60', {
+export const bgColorVariants = cva('bg-transparent', {
   variants: {
     skin: {
-      neutral: 'bg-zinc-100',
-      primary: 'bg-sky-500',
-      secondary: 'bg-yellow-300',
-      warning: 'bg-rose-500',
+      neutral: 'bg-zinc-50',
+      primary: 'bg-sky-200',
+      secondary: 'bg-yellow-200',
+      warning: 'bg-red-200',
     },
   } as const,
 })
@@ -101,7 +101,7 @@ const TableCell = React.forwardRef<
   React.TdHTMLAttributes<HTMLTableCellElement> & {
     skin?: BG_COLOR_VARIANTS_SKINS
   }
->(({ className, skin = 'neutral', ...props }, ref) => (
+>(({ className, skin, ...props }, ref) => (
   <td
     ref={ref}
     className={cn(
