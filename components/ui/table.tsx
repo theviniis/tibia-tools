@@ -79,7 +79,13 @@ const TableHead = React.forwardRef<
 ))
 TableHead.displayName = 'TableHead'
 
-const styles = cva('bg-opacity-60', {
+export type BG_COLOR_VARIANTS_SKINS =
+  | 'neutral'
+  | 'primary'
+  | 'secondary'
+  | 'warning'
+
+export const bgColorVariants = cva('bg-opacity-60', {
   variants: {
     skin: {
       neutral: 'bg-zinc-100',
@@ -93,14 +99,14 @@ const styles = cva('bg-opacity-60', {
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement> & {
-    skin?: 'neutral' | 'primary' | 'secondary' | 'warning'
+    skin?: BG_COLOR_VARIANTS_SKINS
   }
 >(({ className, skin = 'neutral', ...props }, ref) => (
   <td
     ref={ref}
     className={cn(
       'p-2 text-center align-middle [&:has([role=checkbox])]:pr-0',
-      styles({ skin }),
+      bgColorVariants({ skin }),
       className,
     )}
     {...props}

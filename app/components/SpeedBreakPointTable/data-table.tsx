@@ -11,25 +11,29 @@ import {
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
+import { ReactNode } from 'react'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   speed: Record<'base' | 'modifiers' | 'totalWithModifiers', number>
   className?: string
+  children?: ReactNode
 }
 
-export function DataTable<TData, TValue>({
+function DataTable<TData, TValue>({
   columns,
   data,
   speed,
   className = '',
+  children,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -53,6 +57,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className={cn('rounded-md border', className)}>
       <Table>
+        {children}
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -100,3 +105,7 @@ export function DataTable<TData, TValue>({
     </div>
   )
 }
+
+DataTable.Caption = TableCaption
+
+export { DataTable }
